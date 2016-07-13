@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  option: false
+  mchat_test_id: 
+  answer_id: 
+
+two:
+  option: false
+  mchat_test_id: 
+  answer_id: 

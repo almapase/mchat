@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Answer Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Mchat test</th>
+      <th>Answer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answer_groups.each do |answer_group| %>
+      <tr>
+        <td><%= answer_group.option %></td>
+        <td><%= answer_group.mchat_test %></td>
+        <td><%= answer_group.answer %></td>
+        <td><%= link_to 'Show', answer_group %></td>
+        <td><%= link_to 'Edit', edit_answer_group_path(answer_group) %></td>
+        <td><%= link_to 'Destroy', answer_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Answer group', new_answer_group_path %>
