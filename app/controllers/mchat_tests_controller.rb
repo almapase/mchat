@@ -3,6 +3,12 @@ class MchatTestsController < ApplicationController
 
   # GET /mchat_tests
   # GET /mchat_tests.json
+  def take_test
+    @mchat_tests = MchatTest.all
+  end
+
+  # GET /mchat_tests
+  # GET /mchat_tests.json
   def index
     @mchat_tests = MchatTest.all
   end

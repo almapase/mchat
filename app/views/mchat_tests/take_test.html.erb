@@ -1,0 +1,28 @@
+<h2 class="text-center">CUESTIONARIO DEL DESARROLLO COMUNICATIVO Y SOCIAL EN LA INFANCIA <small>(M-CHAT/ES)</small></h2>
+<p class="lead text-center">
+  Seleccione, sí o no, en la respuesta que le parece que refleja mejor <strong>cómo su hijo o hija actúa NORMALMENTE</strong>. Si el comportamiento no es el habitual (por ejemplo, usted solamente se lo ha visto hacer una o dos veces) conteste que el niño o niña NO lo hace. Por favor, conteste a todas las preguntas.
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Pregunta</th>
+      <th colspan="2">Respuesta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mchat_tests.sort.each do |question| %>
+    <tr>
+      <th><%= question.order %></th>
+      <td><%= question.question %></td>
+      <td>SÍ</td>
+      <td>NO</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<p class="text-left">
+  © 1999 Diana Robins, Deborah Fein, & Marianne Barton
+ Translated by Joaquin Fuentes, 2006
+</p>
