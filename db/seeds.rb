@@ -8,14 +8,20 @@
 Answer.destroy_all
 ActiveRecord::Base.connection.execute("ALTER SEQUENCE answers_id_seq RESTART WITH 1")
 
-MchatTest.destroy_all
-ActiveRecord::Base.connection.execute("ALTER SEQUENCE mchat_tests_id_seq RESTART WITH 1")
+Question.destroy_all
+ActiveRecord::Base.connection.execute("ALTER SEQUENCE questions_id_seq RESTART WITH 1")
+
+TypeTest.destroy_all
+ActiveRecord::Base.connection.execute("ALTER SEQUENCE type_tests_id_seq RESTART WITH 1")
 
 Patient.destroy_all
 ActiveRecord::Base.connection.execute("ALTER SEQUENCE patients_id_seq RESTART WITH 1")
 
 User.destroy_all
 ActiveRecord::Base.connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH 1")
+
+#########################
+TypeTest.create(name: "mchat", title: "")
 
 #########################
 # test de M-Chat

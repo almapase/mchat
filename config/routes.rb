@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :questions
+  resources :type_tests
   resources :answer_groups
   resources :answers
   resources :users
   resources :patients
-  resources :mchat_tests
 
   get 'mchat_tests/take_test'
 

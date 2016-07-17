@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713051417) do
+ActiveRecord::Schema.define(version: 20160717053113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answer_groups", force: :cascade do |t|
     t.boolean  "option"
-    t.integer  "mchat_test_id"
     t.integer  "answer_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "question_id"
   end
 
   add_index "answer_groups", ["answer_id"], name: "index_answer_groups_on_answer_id", using: :btree
-  add_index "answer_groups", ["mchat_test_id"], name: "index_answer_groups_on_mchat_test_id", using: :btree
+  add_index "answer_groups", ["question_id"], name: "index_answer_groups_on_question_id", using: :btree
 
   create_table "answers", force: :cascade do |t|
     t.date     "date"
@@ -55,6 +55,23 @@ ActiveRecord::Schema.define(version: 20160713051417) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.integer  "order"
+    t.string   "name"
+    t.integer  "type_test_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "questions", ["type_test_id"], name: "index_questions_on_type_test_id", using: :btree
+
+  create_table "type_tests", force: :cascade do |t|
+    t.string   "name"
+    t.text     "instruction"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -63,7 +80,8 @@ ActiveRecord::Schema.define(version: 20160713051417) do
   end
 
   add_foreign_key "answer_groups", "answers"
-  add_foreign_key "answer_groups", "mchat_tests"
+  add_foreign_key "answer_groups", "questions"
   add_foreign_key "answers", "patients"
   add_foreign_key "answers", "users"
+  add_foreign_key "questions", "type_tests"
 end

@@ -2,8 +2,10 @@
 
 one:
   order: 1
-  question: MyString
+  name: MyString
+  type_test_id: 
 
 two:
   order: 1
-  question: MyString
+  name: MyString
+  type_test_id: 
