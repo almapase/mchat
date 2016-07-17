@@ -21,7 +21,7 @@ User.destroy_all
 ActiveRecord::Base.connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH 1")
 
 #########################
-TypeTest.create(name: "mchat", title: "")
+mchat = TypeTest.new(name: "mchat", title: "CUESTIONARIO DEL DESARROLLO COMUNICATIVO Y SOCIAL EN LA INFANCIA <small>(M-CHAT/ES)</small>", instruction: "<p>Por favor responda estas preguntas acerca de su hijo (a) teniendo en cuenta el comportamiento diario de el o ella.</p><p>Si usted ha notado algún comportamiento descrito en este formulario sólo un par de veces, pero no es algo que hace diariamente, entonces responda la opción “no”.</p><p>Por favor responda <strong>“si”</strong> o <strong>“no”</strong> a cada pregunta y no deje preguntas sin responder.</p><p>Muchas gracias.</p>")
 
 #########################
 # test de M-Chat
@@ -73,9 +73,9 @@ questions_list = [
 #   [23, "Si su hijo o hija tiene que enfrentarse a una situación desconocida, ¿le mira primero a usted a la cara para saber cómo reaccionar?"],
 # ]
 questions_list.each do |order, question|
-  MchatTest.create(order: order, question: question)
+  mchat.questions.build(order: order, name: question)
 end
-
+mchat.save
 #################
 # Users
 10.times do
