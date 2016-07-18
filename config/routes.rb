@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'take_tests/test'
+  post 'take_tests/take_answer'
+
   resources :questions
   resources :type_tests
   resources :answer_groups
@@ -6,13 +9,11 @@ Rails.application.routes.draw do
   resources :users
   resources :patients
 
-  get 'mchat_tests/take_test'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'mchat_tests#take_test'
+  root 'take_tests#test'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -24,8 +24,14 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
-
+    @user = User.first
+    @patient = Patient.first
+    @answer = Answer.new(date: params[:date], user: @user, patient: @patient)
+    20.times do |i|
+      op = "q#{i+1}"
+      op_id = "q_id#{i+1}"
+      @answer.answer_groups.build(option: params[op], question_id: params[op_id])
+    end
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }

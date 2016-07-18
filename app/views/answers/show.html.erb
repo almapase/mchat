@@ -1,19 +1,33 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row page-header">
+  <h2 class="text-center">
+    <%= @answer.answer_groups.first.question.type_test.try(:title).html_safe %>
+  </h2>
+</div>
+
 <p>
-  <strong>Date:</strong>
+  <strong>Fecha:</strong>
   <%= @answer.date %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @answer.user %>
+  <strong>Usuario:</strong>
+  <%= @answer.user.try(:name) %>
 </p>
 
 <p>
-  <strong>Patient:</strong>
-  <%= @answer.patient %>
+  <strong>Paciente:</strong>
+  <%= @answer.patient.try(:name) %>
 </p>
 
-<%= link_to 'Edit', edit_answer_path(@answer) %> |
-<%= link_to 'Back', answers_path %>
+<ul class="list-group">
+  <% @answer.answer_groups.sort.each do |ag| %>
+    <li class="list-group-item">
+      <span class="badge"><%= ag.option ? "SI" : "NO" %></span>
+      <%="#{ag.question.order}.- #{ag.question.name}"%>
+    </li>
+  <% end %>
+</ul>
+<!-- <%= link_to 'Edit', edit_answer_path(@answer) %> | -->
+<%= link_to 'Volver', answers_path %>

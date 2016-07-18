@@ -1,0 +1,49 @@
+<div class="row page-header">
+  <h2 class="text-center"><%= @type_test.title.html_safe %></h2>
+</div>
+<div class="lead text-left">
+  <%= @type_test.instruction.html_safe %>
+    <!-- Seleccione, sí o no, en la respuesta que le parece que refleja mejor <strong>cómo su hijo o hija actúa NORMALMENTE</strong>. Si el comportamiento no es el habitual (por ejemplo, usted solamente se lo ha visto hacer una o dos veces) conteste que el niño o niña NO lo hace. Por favor, conteste a todas las preguntas. -->
+</div>
+<form action=<%= answers_path %> method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <label>Fecha</label>
+  <input type="date" name="date" value="">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Pregunta</th>
+        <th colspan="2">Respuesta</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @type_test.questions.sort.each do |question| %>
+      <tr>
+        <th><%= question.order %></th>
+        <td><%= question.name %></td>
+        <td>
+          <input type="hidden" name=<%= "q_id#{question.order}" %> value=<%= question.id %>>
+          <label class="radio">
+            <input type="radio" name=<%= "q#{question.order}" %> value="true">
+            <strong>SI</strong>
+          </label>
+        </td>
+        <td>
+          <label class="radio">
+            <input type="radio" name=<%= "q#{question.order}" %> value="false">
+            <strong>NO</strong>
+          </label>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="text-right">
+    <button class="btn btn-primary btn-lg" type="submit" name="button">enviar</button>
+  </div>
+</form>
+<!-- <p class="text-left">
+  © 1999 Diana Robins, Deborah Fein, & Marianne Barton
+ Translated by Joaquin Fuentes, 2006
+</p> -->
