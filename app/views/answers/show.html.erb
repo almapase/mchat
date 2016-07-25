@@ -20,6 +20,14 @@
   <strong>Paciente:</strong>
   <%= @answer.patient.try(:name) %>
 </p>
+<p>
+  <strong>Puntaje:</strong>
+  <%= @answer.score %>
+</p>
+<p>
+  <strong>Clasificación:</strong>
+  <%= @answer.classification %>
+</p>
 
 <ul class="list-group">
   <% @answer.answer_groups.sort.each do |ag| %>
